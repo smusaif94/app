@@ -2,17 +2,13 @@ const express = require('express');
 const bodyParser = require('body-parser');
 
 const app = express();
-
-// Azure ke liye port set karna: agar environment variable nahi milta toh default 3000
 const port = process.env.PORT || 3000;
 
-// In-memory "database"
+// In-memory users array
 const users = [];
 
-// Middleware to parse form data
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// Home route: form + table display
 app.get('/', (req, res) => {
   let tableRows = users.map(user => `
     <tr>
@@ -54,28 +50,3 @@ app.get('/', (req, res) => {
             ${tableRows || '<tr><td colspan="2">No data yet</td></tr>'}
           </tbody>
         </table>
-      </body>
-    </html>
-  `);
-});
-
-// Route to handle form submission and add users
-app.post('/add', (req, res) => {
-  const { name, mobile } = req.body;
-
-  // Simple validation
-  if (!name || !mobile || !/^\d{10}$/.test(mobile)) {
-    return res.status(400).send('Invalid input. Go back and enter valid name and 10-digit mobile number.');
-  }
-
-  // Store user data in memory
-  users.push({ name, mobile });
-
-  // Redirect back to home page to show updated data
-  res.redirect('/');
-});
-
-// Start server listening on Azure's port or default 3000 locally
-app.listen(port, () => {
-  console.log(`App running on port ${port}`);
-});
