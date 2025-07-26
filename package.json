@@ -1,0 +1,7 @@
+{
+  "name": "simple-site",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "echo 'No server needed. This is a static HTML site.'"
+  }
+}
