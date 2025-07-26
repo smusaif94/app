@@ -1,23 +1,10 @@
 {
-  "name": "app",
+  "name": "simple-node-app",
   "version": "1.0.0",
-  "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js",
-    "test": "echo \"No tests defined\""
+    "start": "node app.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/smusaif94/app.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/smusaif94/app/issues"
-  },
-  "homepage": "https://github.com/smusaif94/app#readme",
   "dependencies": {
     "body-parser": "^2.2.0",
     "express": "^5.1.0"
